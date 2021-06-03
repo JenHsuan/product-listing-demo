@@ -1,13 +1,14 @@
 import Head from 'next/head';
-import ReduxTester from '../components/ReduxTester';
+import ItemCellPage from '../components/ItemCellPage';
 
-export default function Home() {
+
+export default function index() {
   return (
-    <div>
+    <>
       <Head>
-        <title>Home</title>
+        <title>ItemCellPage</title>
       </Head>
-      <ReduxTester/>
-    </div>
+      <ItemCellPage/>
+    </>
   )
 }
