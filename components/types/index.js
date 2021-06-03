@@ -1,2 +1,1 @@
-export const GET_DATA = 'GET_DATA';
-export const GET_USERS = 'GET_USERS';
+export const SET_WISH_LIST = 'SET_WISH_LIST';

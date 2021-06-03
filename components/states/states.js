@@ -1,9 +1,8 @@
 //Initial states
 export const initialState = {
-    users:[],
-    data: ''
+    wishList: [],
+    showModal: false
 };
 
 //Selector functions
-export const selectData = rootState => rootState.templateReducer.data;
-export const selectUsers = rootState => rootState.templateReducer.users;
+export const selectWishList = rootState => rootState.productReducer.wishList;
