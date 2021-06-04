@@ -51,7 +51,7 @@ const ItemCell = ({ id, imgSrcList, isPortrait, title, finalPrice, regularPrice,
                 ...oldWishList,
                 {
                     id: id,
-                    imgSrcList: imgSrcList[0],
+                    imgSrc: imgSrcList[index],
                     isPortrait: isPortrait,
                     title: title,
                     finalPrice: finalPrice,

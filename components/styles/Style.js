@@ -19,6 +19,15 @@ export const ItemCellContainerStyle = styled('div')(
   })
 );
 
+export const ItemCellPageContainerStyle = styled('div')(
+  variant({
+    scale: 'itemCellPageContainer',
+    variants: {
+      major: {}
+    }
+  })
+);
+
 export const WishListBtnStyle = styled('div')(
   variant({
     scale: 'wishListBtn',

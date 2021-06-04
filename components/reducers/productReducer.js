@@ -1,6 +1,7 @@
 //Types
 import {
-    SET_WISH_LIST
+    SET_WISH_LIST,
+    SET_WISH_LIST_MODAL
 } from '../types';
 
 //States
@@ -15,6 +16,11 @@ export const productReducer = (state = initialState, action) => {
              return {
                 ...state,
                 wishList: action.payload.wishList
+             };
+        case SET_WISH_LIST_MODAL:
+             return {
+                ...state,
+                showWishListModal: action.payload.showWishListModal
             };
         default:
             return state;

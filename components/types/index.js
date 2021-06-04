@@ -1,1 +1,2 @@
 export const SET_WISH_LIST = 'SET_WISH_LIST';
+export const SET_WISH_LIST_MODAL = 'SET_WISH_LIST_MODAL';

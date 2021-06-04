@@ -1,34 +1,156 @@
 export default {
     itemCellContainer: {
         grid: {
+            postion: 'relative',
             display: 'grid',
             gridTemplateColumns:'repeat(auto-fit,minmax(300px, 1fr))',
             gap: '10px',
             justifyContent: 'center'
         }
     },
-    itemCellPageCoatiner: {
-
+    itemCellPageContainer: {
+        major: {
+            position: 'relative'
+        }
     },
     wishListBtn: {
         major: {
             margin: '50px 5px 10px 5px',
             '& button': {
                 width: '100%',
-                height: '50px',
+                height: '50px'
             }
         }
     },
-    wishModal: {
-        major: {
-            postion: 'absolute',
+    wishListModal: {
+        empty: {
+            position: 'fixed',
             display: 'block',
-            top: '50%',
+            top: '100px',
             left: '50%',
-            width: '300px',
-            height: '300px',
+            width: '70%',
+            height: '220px',
             zIndex: '1000',
-            background: 'blue'
+            background: '#fff',
+            border: '3px solid black',
+            transform: 'translate(-50%, 0)',
+            '& > .empty-remind': {
+                fontSize: '18px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                margin: '20px'
+            },
+            '> .close-btn': {
+                width: '50px',
+                height: '50px',
+                display: 'flex',
+                margin: '15px 15px 15px auto',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                fontSize: '20px',
+                cursor: 'pointer'
+            }
+        },
+        major: {
+            position: 'fixed',
+            display: 'block',
+            top: '100px',
+            left: '50%',
+            width: '70%',
+            height: '460px',
+            zIndex: '1000',
+            background: '#fff',
+            border: '3px solid black',
+            transform: 'translate(-50%, 0)',
+            '& > .modal-title': {
+                fontSize: '18px',
+                margin: '0 40px',
+                fontFamily: 'Open Sans',
+                fontWeight: 700
+            },
+            '> .close-btn': {
+                width: '50px',
+                height: '50px',
+                display: 'flex',
+                margin: '15px 15px 15px auto',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                fontSize: '20px',
+                cursor: 'pointer'
+            },
+            '& > .wish-list-table': {
+                margin: '0 50px',
+                overflowY: 'scroll',
+                border: '1px solid black',
+                height: '300px',
+                '& .content-field': {
+                    display: 'flex',
+                    alignItems: 'center',
+                    margin: '10px 15px',
+                    '> .close-btn': {
+                        width: '10px',
+                        height: '10px',
+                        margin: '15px 0 15px auto',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        fontSize: '12ßpx',
+                        cursor: 'pointer',
+                        background: '#fff',
+                        border: 'none'
+                    },
+                    '& > .landscape-image-container': {
+                        width: '60px',
+                        height: '40px',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        margin: '5px 20px 5px 10px',
+                        position: 'relative',
+                        borderRadius: '3px',
+                        '& > img': {
+                            height: '100%',
+                        }
+                    },
+                    '& > .portrait-image-container': {
+                        width: '48px',
+                        height: '40px',
+                        overflow: 'hidden',
+                        display: 'flex',
+                        alignItems: 'center',
+                        margin: '0',
+                        position: 'relative',
+                        borderRadius: '3px',
+                        '& > img': {
+                            height: '100%',
+                        }
+                    },
+                    '& .content-title': {
+                        fontFamily: 'Open Sans',
+                        fontSize: '14px',
+                        display: 'inline-block'
+                    },
+                    '& .content-final-price': {
+                        fontFamily: 'Open Sans',
+                        fontSize: '14px',
+                        margin: '0 5px'
+                    }
+                }
+            },
+        },
+        backModal: {
+            position: 'fixed',
+            display: 'block',
+            top: '0',
+            left: '0',
+            width: '100vw',
+            height: '100vh',
+            zIndex: '100',
+            background: '#000',
+            opacity: 0.5
         }
     },
     itemCell: {
@@ -125,6 +247,7 @@ export default {
             display: 'flex',
             alignItems: 'center',
             margin: '0',
+            position: 'relative',
             '&:hover .left-indicator': {
                 opacity: 0.7,
             },

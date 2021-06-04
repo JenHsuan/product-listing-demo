@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import ItemCell from './ItemCell';
 import WishListButton from './WishListButton';
+import WishListModal from './WishListModal';
 import {
-  ItemCellStyle,
-  ItemCellContainerStyle,
-  WishListBtnStyle
+    ItemCellStyle,
+    ItemCellContainerStyle,
+    ItemCellPageContainerStyle,
+    WishListModalStyle
 } from './styles/Style';
+
+import {
+    useSelector,
+} from "react-redux";
+
+import {
+    selectShowWishListModal
+} from "./states/states";
 
 import cake from '../public/S__10166291.jpg';
 import dog from '../public/S__10166293.jpg';
@@ -13,6 +23,7 @@ import dog from '../public/S__10166293.jpg';
 const ItemCellPage = () => {
     const NUMBER_ITEM = 6;
     const [itemCells, setItemCells] = useState([]);
+    const showWishListModal = useSelector(selectShowWishListModal);
 
     useEffect(() => {
         const data = [];
@@ -33,6 +44,7 @@ const ItemCellPage = () => {
 
     return (
         <>
+        {showWishListModal && <WishListModal/>}
         <ItemCellContainerStyle variant="grid">
             {itemCells.map(cell => {
                 return (
@@ -49,9 +61,7 @@ const ItemCellPage = () => {
                 );
             })}
             </ItemCellContainerStyle>
-            <WishListBtnStyle variant='major'>
-                <WishListButton/>
-            </WishListBtnStyle>
+            <WishListButton/>
         </>
     )
 }
