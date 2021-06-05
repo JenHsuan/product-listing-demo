@@ -111,6 +111,8 @@ const ItemCell = ({ id, imgSrcList, title, finalPrice, regularPrice, fullStarNum
                 </ItemCellStyle>
             ) : (
                 <ItemCellStyle variant='landScapeImageContainer'>
+                    {finalPrice < regularPrice && (
+                            <div className="on-sales-label">SAVE ${Math.round((regularPrice - finalPrice)* 100) / 100}</div>)}
                     <button className='left-indicator' onClick={() => { changeImage(-1) }}>{ '<' }</button>
                     <img src={imgSrcList[index]} alt="no image" onLoad={onImgLoad}/>
                     <button className='right-indicator' onClick={() => {changeImage(1)}}>{ '>' }</button>
@@ -119,12 +121,14 @@ const ItemCell = ({ id, imgSrcList, title, finalPrice, regularPrice, fullStarNum
 
             <div className="content-title">{title}</div>
             <div className="content-field">
-                <div className="content-description">final price:</div>
-                <span className="content-final-price">${finalPrice}</span>
-            </div>
-            <div className="content-field">
-                <div className="content-description">regualar price:</div>
-                <span className="content-regular-price">${regularPrice}</span>
+                {finalPrice < regularPrice ? (
+                    <>
+                        <span className="content-onsales-price">${finalPrice}</span>
+                        <span className="content-regular-price">${regularPrice}</span>
+                    </>
+                ) : (
+                    <span className="content-final-price">${finalPrice}</span>
+                )}
             </div>
             <ItemCellStyle variant='starsContainer'>
                 {fullStars.map((star, index) => {
@@ -143,7 +147,8 @@ const ItemCell = ({ id, imgSrcList, title, finalPrice, regularPrice, fullStarNum
                         <div className="starContainer">
                             <img src={halfStar} alt="no star image" />
                         </div>
-                    )}
+                )}
+                <span className="content-stars">{fullStarNumber + 0.5 * hasHalfStar}</span>
             </ItemCellStyle>
             <HeartButton onHeartClicked={() => onHeartClicked()}
                 isSelected={typeof wishList.find(ele => ele.id === id) != 'undefined'}>

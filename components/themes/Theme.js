@@ -1,66 +1,44 @@
-import { keyframes } from 'styled-components'
-
-const breatheAnimation = keyframes`
- 0% { height: 100px; width: 100px; }
- 30% { height: 400px; width: 400px; opacity: 1 }
- 40% { height: 405px; width: 405px; opacity: 0.3; }
- 100% { height: 100px; width: 100px; opacity: 0.6; }
-`
-
 export default {
     itemCellContainer: {
         grid: {
             postion: 'relative',
             display: 'grid',
-            gridTemplateColumns:'repeat(auto-fit,minmax(300px, 1fr))',
-            gap: '10px',
-            justifyContent: 'center'
+            gap: '1vw',
+            justifyContent: 'center',
+            '@media screen and (max-width:768px)': {
+                gridTemplateColumns:'auto auto',
+            },
+            '@media screen and (max-width:1024px) and (min-width:768px)': {
+                gridTemplateColumns:'auto auto auto',
+            },
+            '@media screen and (min-width:1024px)': {
+                gridTemplateColumns:'auto auto auto auto',
+            },
         }
     },
     itemCellPageContainer: {
         major: {
             position: 'relative',
-            background: '#fff',
             overflowX: 'hidden',
-            margin: '50px 0'
-        }
-    },
-    scrollIndicator: {
-        major: {
-            width: '60px',
-            height: '60px',
-            borderRadius: '50%',
-            position: 'fixed',
-            background: '#6c6c6c',
-            border: '1pz solid #fff',
-            zIndex: '100',
-            opacity: 0.5,
-            left: '100%',
-            top: '80%',
-            transform: 'translate(-110%, -400%)',
-            cursor: 'pointer',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: '#fff',
-            fontSize: '14px',
-            fontWeight: 700,
-            '&:hover': {
-                opacity: 0.9
-            }
+            margin: '0',
+            padding: '0'
         }
     },
     wishListBtn: {
         major: {
-            margin: '50px 5px 10px 5px',
+            margin: '0 0 0 0',
             '& button': {
                 width: '100%',
                 height: '50px',
                 fontFamily: 'Open Sans',
                 fontSize: '18px',
                 fontWeight: 700,
-                color: '#6c6c6c',
-                cursor: 'pointer'
+                background: '#6c6c6c',
+                color: '#fff',
+                cursor: 'pointer',
+                '&:hover': {
+                    background: '#000'
+                }
             }
         }
     },
@@ -92,7 +70,15 @@ export default {
                 justifyContent: 'center',
                 alignItems: 'center',
                 fontSize: '20px',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                fontSize: '18px',
+                borderRaduis: '5px',
+                background: '#6c6c6c',
+                color: '#fff',
+                border: 'none',
+                '&:hover': {
+                    background: '#000'
+                }
             }
         },
         major: {
@@ -109,7 +95,7 @@ export default {
             '& > .modal-title': {
                 fontSize: '18px',
                 margin: '0 0 1vh 4vw',
-                fontFamily: 'Open Sans',
+                fontFamily: 'YahooSansCond, YahooSans, sans-serif',
                 fontWeight: 700
             },
             '> .close-btn': {
@@ -121,12 +107,18 @@ export default {
                 justifyContent: 'center',
                 alignItems: 'center',
                 fontSize: '20px',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                background: '#6c6c6c',
+                color: '#fff',
+                border: 'none',
+                '&:hover': {
+                    background: '#000'
+                }
             },
             '& > .wish-list-table': {
                 margin: '0 auto',
                 overflowY: 'scroll',
-                border: '1px solid black',
+                border: '1px solid rgb(241, 241, 245)',
                 borderRadius: '3px',
                 height: '300px',
                 width: '90%',
@@ -134,7 +126,10 @@ export default {
                     display: 'flex',
                     alignItems: 'center',
                     margin: '10px 15px',
+                    flexDirection: 'row',
+                    width: '100%',
                     '> .close-btn': {
+                        flex: '1 1 auto',
                         width: '10%',
                         height: '10%',
                         display: 'flex',
@@ -146,6 +141,7 @@ export default {
                         border: 'none'
                     },
                     '& > .landscape-image-container': {
+                        flex: '1 1 auto',
                         width: '60px',
                         height: '40px',
                         overflow: 'hidden',
@@ -155,42 +151,49 @@ export default {
                         position: 'relative',
                         borderRadius: '3px',
                         '& > img': {
+                            borderRadius: '3px',
                             height: '100%',
                         }
                     },
                     '& > .portrait-image-container': {
-                        width: '48px',
+                        flex: '1 1 auto',
+                        width: '60px',
                         height: '40px',
                         overflow: 'hidden',
                         display: 'flex',
-                        alignItems: 'center',
-                        margin: '0',
+                        justifyContent: 'center',
+                        margin: '5px 20px 5px 10px',
                         position: 'relative',
                         borderRadius: '3px',
                         '& > img': {
+                            borderRadius: '3px',
                             height: '100%',
                         }
                     },
-                    '& .content-title': {
-                        fontFamily: 'Open Sans',
-                        fontSize: '14px',
-                        display: 'inline-block'
+                    '& > .content-title': {
+                        flex: '1 2 auto',
+                        fontFamily: 'YahooSansCond, YahooSans, sans-serif',
+                        fontSize: '16px',
+                        width: '200px',
+                        fontWeight: 500,
+                        textAlign: 'left'
                     },
-                    '& .content-final-price': {
-                        fontFamily: 'Open Sans',
-                        fontSize: '14px',
-                        margin: '0 5px'
+                    '& > .content-final-price': {
+                        flex: '1 1 auto',
+                        fontFamily: 'YahooSansCond, YahooSans, sans-serif',
+                        fontSize: '16px',
+                        fontWeight: 500,
+                        width: '100px',
+                        textAlign: 'left'
                     }
                 }
             },
             '& > .total-price': {
                 fontSize: '16px',
-                position: 'absolute',
                 left: '100%',
-                marginTop: '5px',
-                transform: 'translate(-110%, 0)',
-                width: '200px',
-                fontFamily: 'Open Sans',
+                margin: '1vh 0 0 4vw',
+                paddingRight: '20px',
+                fontFamily: 'YahooSansCond, YahooSans, sans-serif',
                 fontWeight: 500
             }
         },
@@ -204,7 +207,8 @@ export default {
             zIndex: '100',
             background: '#000',
             opacity: 0.5,
-            margin: 0
+            margin: 0,
+            zIndex: '100'
         }
     },
     itemCell: {
@@ -212,17 +216,19 @@ export default {
             margin: 'auto'
         },
         contentBody: {
-            width: '300px',
-            height: '520px',
+            width: '180px',
+            height: '320px',
             background: '#ffffff',
             borderRaduis: '5px',
             position: 'relative',
+            border: '1px solid rgb(241, 241, 245)',
+            margin: ' 0 0 40px 0',
             '&:hover': {
                 boxShadow: '2px black'
             },
             '& .content-title': {
                 fontFamily: 'Open Sans',
-                fontSize: '20px',
+                fontSize: '14px',
                 margin: '10px 15px'
             },
             '& .content-field': {
@@ -238,12 +244,19 @@ export default {
                 '& .content-final-price': {
                     fontFamily: 'Open Sans',
                     fontWeight: '700',
-                    fontSize: '28px',
-                    margin: '0 15px'
+                    fontSize: '20px',
+                    margin: '0'
+                },
+                '& .content-onsales-price': {
+                    fontFamily: 'Open Sans',
+                    fontWeight: '700',
+                    fontSize: '20px',
+                    color: 'rgb(255, 77, 82)',
+                    margin: '0'
                 },
                 '& .content-regular-price': {
                     fontFamily: 'Open Sans',
-                    fontSize: '12px',
+                    fontSize: '14px',
                     margin: '0 5px',
                     color: '#6c6c6c',
                     textDecoration: 'line-through'
@@ -251,15 +264,15 @@ export default {
             }
         },
         landScapeImageContainer: {
-            width: '300px',
-            height: '250px',
+            width: '180px',
+            height: '150px',
             overflow: 'hidden',
             display: 'flex',
             justifyContent: 'center',
+            alignItems: 'center',
             margin: '0',
-            position: 'relative',
             borderRadius: '5px',
-            border: '1px solid #6c6c6c',
+            border: '1px solid rgb(241, 241, 245)',
             '&:hover .left-indicator': {
                 opacity: 0.7,
             },
@@ -276,14 +289,28 @@ export default {
                 transitionDuration: '0.5s',
                 background: 'rgb(247, 248, 255)'
             },
-            '& > .left-indicator': {
-                width: '10%',
-                height: '12%',
+            '& > .on-sales-label': {
                 position: 'absolute',
-                top: '50%',
+                zIndex: '10',
+                top: '140px',
+                left: '0',
+                background: 'rgb(255, 77, 82)',
+                paddingRight: '20px',
+                paddingLeft: '10px',
+                display: 'inline-block',
+                color: '#fff',
+                fontSize: '12px',
+                borderTopRightRadius: '15px',
+                borderBottomRightRadius: '15px'
+            },
+            '& > .left-indicator': {
+                width: '12%',
+                height: '7%',
+                position: 'absolute',
+                top: '25%',
                 left: '0',
                 background: '#fff',
-                zIndex: '1000',
+                zIndex: '10',
                 transform: 'translate(0, -50%)',
                 opacity: 0,
                 transition: '0.7s',
@@ -296,13 +323,13 @@ export default {
                 alignItems: 'center',
             },
             '& > .right-indicator': {
-                width: '10%',
-                height: '12%',
+                width: '12%',
+                height: '7%',
                 position: 'absolute',
-                top: '50%',
+                top: '25%',
                 left: '100%',
                 background: '#fff',
-                zIndex: '1000',
+                zIndex: '10',
                 transform: 'translate(-100%, -50%)',
                 opacity: 0,
                 transition: '0.7s',
@@ -316,15 +343,15 @@ export default {
             }
         },
         portraitImageContainer: {
-            width: '300px',
-            height: '250px',
+            width: '180px',
+            height: '150px',
             overflow: 'hidden',
             display: 'flex',
+            justifyContent: 'center',
             alignItems: 'center',
             margin: '0',
-            position: 'relative',
             borderRadius: '5px',
-            border: '1px solid #6c6c6c',
+            border: '1px solid rgb(241, 241, 245)',
             '&:hover .left-indicator': {
                 opacity: 0.7,
             },
@@ -341,14 +368,28 @@ export default {
                 transitionDuration: '0.5s',
                 background: 'rgb(247, 248, 255)'
             },
-            '& > .left-indicator': {
-                width: '10%',
-                height: '12%',
+            '& > .on-sales-label': {
                 position: 'absolute',
-                top: '50%',
+                zIndex: '10',
+                top: '140px',
+                left: '0',
+                background: 'rgb(255, 77, 82)',
+                paddingRight: '20px',
+                paddingLeft: '10px',
+                display: 'inline-block',
+                color: '#fff',
+                fontSize: '12px',
+                borderTopRightRadius: '15px',
+                borderBottomRightRadius: '15px'
+            },
+            '& > .left-indicator': {
+                width: '12%',
+                height: '7%',
+                position: 'absolute',
+                top: '25%',
                 left: '0%',
                 background: '#fff',
-                zIndex: '1000',
+                zIndex: '10',
                 transform: 'translate(0, -50%)',
                 opacity: 0,
                 transition: '0.7s',
@@ -361,13 +402,13 @@ export default {
                 alignItems: 'center',
             },
             '& > .right-indicator': {
-                width: '10%',
-                height: '12%',
+                width: '12%',
+                height: '7%',
                 position: 'absolute',
-                top: '50%',
+                top: '25%',
                 left: '100%',
                 background: '#fff',
-                zIndex: '1000',
+                zIndex: '10',
                 transform: 'translate(-100%, -50%)',
                 opacity: 0,
                 transition: '0.7s',
@@ -382,25 +423,31 @@ export default {
         },
         starsContainer: {
             position: 'absolute',
-            left: '78%',
-            top: '100%',
-            transform: 'translate(-110%, -300%)',
-            width: '200px',
+            left: '75%',
+            top: '93%',
+            transform: 'translate(-80%, -120%)',
+            width: '150px',
            '& > .starContainer': {
                 display: 'inline-block',
-                width: '20px',
-                margin: '10px 10px 0 0',
+                width: '15px',
+                margin: '2px 2px 0 0',
                 '& > img': {
                     width: '100%',
                 }
             },
+            '& .content-stars': {
+                fontFamily: 'Open Sans',
+                fontSize: '14px',
+                margin: '0 5px',
+                color: '#6c6c6c'
+            }
         },
         heartContainer: {
-            width: '30px',
+            width: '20px',
             position: 'absolute',
             left: '100%',
             top: '100%',
-            transform: 'translate(-110%, -200%)',
+            transform: 'translate(-110%, -110%)',
             background: 'rgba(247, 248, 255, 0.95)',
             borderRadius: '50%',
            '& > img': {
@@ -412,9 +459,9 @@ export default {
                 content: 'attr(data-tooltip)',
                 background: 'rgba(247, 248, 255, 0.95)',
                 color: 'rgb(35, 42, 49)',
-                padding: '.8em 1em',
+                padding: '.28em 1em',
                 position: 'absolute',
-                left: '-410%',
+                left: '-630%',
                 fontSize: '12px',
                 fontFamily: 'Open Sans',
                 fontWeight: '700',
@@ -430,14 +477,6 @@ export default {
                   display: 'block'
                 }
             }
-        },
-        slideTip: {
-            position: 'relative',
-            background: 'blue',
-            display: 'block',
-            height: '30px',
-            left: '-200px',
-            width: '200px'
         }
     }
 };

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ItemCell from './ItemCell';
 import WishListButton from './WishListButton';
 import WishListModal from './WishListModal';
-import ScrollButton from './ScrollButton';
 
 import {
     ItemCellStyle,
@@ -55,7 +54,7 @@ const data = [{
     imgSrcList: [dog1, dog2, dog3],
     title: 'Pomeranian',
     finalPrice: 500,
-    regularPrice: 600,
+    regularPrice: 500,
     fullStarNumber: 4,
     hasHalfStar: true
 }, {
@@ -71,7 +70,7 @@ const data = [{
     imgSrcList: [ipad1, ipad2, ipad3],
     title: 'Apple iPad Air Retina Display Tablet 32GB, Wi-Fi',
     finalPrice: 189.99,
-    regularPrice: 190,
+    regularPrice: 189.99,
     fullStarNumber: 4,
     hasHalfStar: true
 }, {
@@ -79,7 +78,7 @@ const data = [{
     imgSrcList: [iphone1, iphone2, iphone3],
     title: 'iPhone 12 mini - 128GB',
     finalPrice: 31.21,
-    regularPrice: 32.88,
+    regularPrice: 31.21,
     fullStarNumber: 4,
     hasHalfStar: true
 }, {
@@ -102,7 +101,6 @@ const ItemCellPage = () => {
 
     return (
         <ItemCellPageContainerStyle variant="major">
-            <ScrollButton></ScrollButton>
         {showWishListModal && <WishListModal/>}
         <ItemCellContainerStyle variant="grid">
             {itemCells.map(cell => {

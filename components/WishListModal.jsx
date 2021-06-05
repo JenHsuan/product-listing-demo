@@ -45,19 +45,23 @@ const WishListModal = () => {
             <WishListModalStyle variant="major">
                 <button className='close-btn' onClick={closeModal}>X
                 </button>
-                <div className="modal-title">Wish List</div>
+                <div className="modal-title">Wishlist</div>
                     <div className="wish-list-table">
-                        {wishList.map(ele => {
+                        {wishList.map((ele, index) => {
                             return (
-                                <div className="content-field">
+                                <div className="content-field" key={index}>
                                     <button className='close-btn' onClick={() => {
                                         removeItem(ele.id)
                                     }}>X</button>
+                                    {ele.isPortrait ? (
+                                    <div className="portrait-image-container">
+                                        <img src={ele.imgSrc} alt="" />
+                                    </div>) : (
                                     <div className="landscape-image-container">
                                         <img src={ele.imgSrc} alt="" />
-                                    </div>
-                                    <div className="content-title">{ele.title}</div>
+                                    </div>)}
                                     <div className="content-final-price">${ele.finalPrice}</div>
+                                    <div className="content-title">{ele.title}</div>
                                 </div>
                             )
                         })}
