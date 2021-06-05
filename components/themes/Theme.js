@@ -234,7 +234,8 @@ export default {
                     fontFamily: 'Open Sans',
                     fontSize: '12px',
                     margin: '0 5px',
-                    color: '#6c6c6c'
+                    color: '#6c6c6c',
+                    textDecoration: 'line-through'
                 }
             }
         },
