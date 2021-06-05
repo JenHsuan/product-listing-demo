@@ -386,7 +386,6 @@ export default {
         heartContainer: {
             width: '30px',
             position: 'absolute',
-            zIndex: '100',
             left: '100%',
             top: '100%',
             transform: 'translate(-110%, -200%)',
@@ -396,7 +395,6 @@ export default {
                width: '100%',
                cursor: 'pointer',
                position: 'relative',
-               zIndex: '2'
             },
             '&:before': {
                 content: 'attr(data-tooltip)',
