@@ -9,7 +9,7 @@ import {
 
 const HeartButton = ({ onHeartClicked, isSelected }) => {
     return (
-        <ItemCellStyle variant='heartContainer'>
+        <ItemCellStyle variant='heartContainer' data-tooltip="Add to Wish List">
             <img src={isSelected ? fullHeart : emptyHeart} alt="no heart image"
                 onClick={() => onHeartClicked()} />
         </ItemCellStyle>

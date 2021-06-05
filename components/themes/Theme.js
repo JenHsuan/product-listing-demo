@@ -389,10 +389,36 @@ export default {
             zIndex: '100',
             left: '100%',
             top: '100%',
-            transform: 'translate(-110%, -300%)',
+            transform: 'translate(-110%, -200%)',
+            background: 'rgba(247, 248, 255, 0.95)',
+            borderRadius: '50%',
            '& > img': {
                width: '100%',
-               cursor:'pointer'
+               cursor: 'pointer',
+               position: 'relative',
+               zIndex: '2'
+            },
+            '&:before': {
+                content: 'attr(data-tooltip)',
+                background: 'rgba(247, 248, 255, 0.95)',
+                color: 'rgb(35, 42, 49)',
+                padding: '.8em 1em',
+                position: 'absolute',
+                left: '-410%',
+                fontSize: '12px',
+                fontFamily: 'Open Sans',
+                fontWeight: '700',
+                borderRadius: '3px',
+                marginLeft: '14px',
+                whiteSpace: 'pre',
+                display: 'none'
+            },
+            '&:hover': {
+                cursor: 'pointer',
+                '&:before, &:after': {
+                  opacity: 1,
+                  display: 'block'
+                }
             }
         },
         slideTip: {
