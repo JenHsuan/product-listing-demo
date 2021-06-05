@@ -101,14 +101,14 @@ export default {
             top: '100px',
             left: '50%',
             width: '70%',
-            height: '460px',
+            height: '520px',
             zIndex: '1000',
             background: '#fff',
             border: '3px solid black',
             transform: 'translate(-50%, 0)',
             '& > .modal-title': {
                 fontSize: '18px',
-                margin: '0 50px',
+                margin: '0 0 1vh 4vw',
                 fontFamily: 'Open Sans',
                 fontWeight: 700
             },
@@ -127,6 +127,7 @@ export default {
                 margin: '0 auto',
                 overflowY: 'scroll',
                 border: '1px solid black',
+                borderRadius: '3px',
                 height: '300px',
                 width: '90%',
                 '& .content-field': {
@@ -182,6 +183,16 @@ export default {
                     }
                 }
             },
+            '& > .total-price': {
+                fontSize: '16px',
+                position: 'absolute',
+                left: '100%',
+                marginTop: '5px',
+                transform: 'translate(-110%, 0)',
+                width: '200px',
+                fontFamily: 'Open Sans',
+                fontWeight: 500
+            }
         },
         backModal: {
             position: 'fixed',
