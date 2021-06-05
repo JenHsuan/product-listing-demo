@@ -10,8 +10,7 @@ import {
 } from "react-redux";
 
 import {
-    selectWishList,
-    selectShowWishListModal
+    selectWishList
 } from "./states/states";
 
 import {
@@ -28,13 +27,15 @@ const WishListModal = () => {
         dispatch(setWishList(oldWishList.filter(ele => ele.id !== id)))
     };
 
+    const closeModal = () => {
+        dispatch(setWishListModal(false));
+    };
+
     return (
         <>
         {wishList.length === 0 ? (
             <WishListModalStyle variant="empty">
-                <button className='close-btn' onClick={() => {
-                    dispatch(setWishListModal(false));
-                        }}>X
+                <button className='close-btn' onClick={closeModal}>X
                 </button>
                 <div className='empty-remind'>
                     You don't have items in the wish list!
@@ -42,9 +43,7 @@ const WishListModal = () => {
             </WishListModalStyle>
         ): (
             <WishListModalStyle variant="major">
-                <button className='close-btn' onClick={() => {
-                    dispatch(setWishListModal(false));
-                        }}>X
+                <button className='close-btn' onClick={closeModal}>X
                 </button>
                 <div className="modal-title">Wish List</div>
                     <div className="wish-list-table">
@@ -64,9 +63,7 @@ const WishListModal = () => {
                         })}
                 </div>
             </WishListModalStyle>)}
-        <WishListModalStyle variant="backModal" onClick={() => {
-            dispatch(setWishListModal(false));
-        }}/>
+        <WishListModalStyle variant="backModal" onClick={closeModal}/>
         </>
     )
 }

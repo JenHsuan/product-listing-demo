@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import HeartButton from './HeartButton';
-import fullStar from '../public/Star_Filled.svg'
-import halfStar from '../public/Star_Half_Empty.svg'
+import fullStar from '../public/icons/Star_Filled.svg'
+import halfStar from '../public/icons/Star_Half_Empty.svg'
+import emptyStar from '../public/icons/Star_Empty.svg'
 
 import {
     ItemCellStyle,
@@ -21,11 +22,14 @@ import {
     selectWishList
 } from "./states/states";
 
-const ItemCell = ({ id, imgSrcList, isPortrait, title, finalPrice, regularPrice, fullStarNumber, hasHalfStar }) => {
+const ItemCell = ({ id, imgSrcList, title, finalPrice, regularPrice, fullStarNumber, hasHalfStar }) => {
+    const MAX_STAR_NUMBER = 5;
     const [index, setIndex] = useState(0);
     const dispatch = useDispatch();
     const wishList = useSelector(selectWishList);
     const [fullStars, setFullStars] = useState([]);
+    const [emptyStars, setEmptyStars] = useState([]);
+    const [isPortrait, setIsPortrait] = useState([false]);
 
     const changeImage = (add) => {
         let newIndex = index + add;
@@ -62,8 +66,17 @@ const ItemCell = ({ id, imgSrcList, isPortrait, title, finalPrice, regularPrice,
         }
     };
 
+    const onImgLoad = ({ target: img }) => {
+        const flag = img.offsetHeight > img.offsetWidth;
+        if (isPortrait !== flag) {
+            setIsPortrait(flag);
+        }
+    };
+
+
     useEffect(() => {
-        const stars = [];
+        let stars = [];
+        fullStarNumber = fullStarNumber > MAX_STAR_NUMBER ? MAX_STAR_NUMBER : fullStarNumber;
         for (var i = 0; i < fullStarNumber; i++) {
             stars.push({
                 src: fullStar,
@@ -71,21 +84,36 @@ const ItemCell = ({ id, imgSrcList, isPortrait, title, finalPrice, regularPrice,
             });
         }
         setFullStars(stars)
+
+        let emptyStarNumber = MAX_STAR_NUMBER - fullStarNumber;
+        if (hasHalfStar) {
+            emptyStarNumber -= 1;
+        }
+        stars = [];
+
+        for (var i = 0; i < emptyStarNumber; i++) {
+            stars.push({
+                src: emptyStar,
+                alt: "no star image"
+            });
+        }
+        setEmptyStars(stars)
+
     },[fullStarNumber]);
 
     return (
         <ItemCellStyle variant='contentBody'>
             {isPortrait ? (
                <ItemCellStyle variant='portraitImageContainer'>
-                    <div className='left-indicator' onClick={() => {changeImage(-1)}}/>
-                        <img src={imgSrcList[index]} alt="no image" />
-                    <div className='right-indicator' onClick={() => {changeImage(1)}}/>
+                    <div className='left-indicator' onClick={() => { changeImage(-1) }}>{ '<' }</div>
+                    <img src={imgSrcList[index]} alt="no image" onLoad={onImgLoad}/>
+                    <div className='right-indicator' onClick={() => {changeImage(1)}}>{ '>' }</div>
                 </ItemCellStyle>
             ) : (
                 <ItemCellStyle variant='landScapeImageContainer'>
-                    <div className='left-indicator' onClick={() => {changeImage(-1)}}/>
-                        <img src={imgSrcList[index]} alt="no image" />
-                    <div className='right-indicator' onClick={() => {changeImage(1)}}/>
+                    <div className='left-indicator' onClick={() => { changeImage(-1) }}>{ '<' }</div>
+                    <img src={imgSrcList[index]} alt="no image" onLoad={onImgLoad}/>
+                    <div className='right-indicator' onClick={() => {changeImage(1)}}>{ '>' }</div>
                 </ItemCellStyle>
             )}
 
@@ -95,23 +123,31 @@ const ItemCell = ({ id, imgSrcList, isPortrait, title, finalPrice, regularPrice,
                 <span className="content-final-price">${finalPrice}</span>
             </div>
             <div className="content-field">
-                <div className="content-description">regualr price:</div>
+                <div className="content-description">regualar price:</div>
                 <span className="content-regular-price">${regularPrice}</span>
             </div>
-            <div className="content-field">
-                {fullStars.map(star => {
+            <ItemCellStyle variant='starsContainer'>
+                {fullStars.map((star, index) => {
                     return (
-                        <ItemCellStyle variant='starContainer'>
+                        <div className="starContainer" key={`full-star-${index}`}>
+                            <img src={star.src} alt={star.alt}/>
+                        </div>)
+                })}
+                {emptyStars.map(star => {
+                    return (
+                        <div className="starContainer" key={`empty-star-${index}`}>
                             <img src={star.src} alt={star.alt} />
-                        </ItemCellStyle>)})}
-                {hasHalfStar && (
-                    <ItemCellStyle variant='starContainer'>
-                        <img src={halfStar} alt="no star image" />
-                    </ItemCellStyle>
-                )}
-            </div>
+                        </div>)
+                })}
+                {hasHalfStar && fullStarNumber <= MAX_STAR_NUMBER - 1 && (
+                        <div className="starContainer">
+                            <img src={halfStar} alt="no star image" />
+                        </div>
+                    )}
+            </ItemCellStyle>
             <HeartButton onHeartClicked={() => onHeartClicked()}
-                        isSelected={ wishList.find(ele => ele.id === id)}/>
+                isSelected={typeof wishList.find(ele => ele.id === id) != 'undefined'}>
+            </HeartButton>
         </ItemCellStyle>
     )
 };
@@ -119,7 +155,6 @@ const ItemCell = ({ id, imgSrcList, isPortrait, title, finalPrice, regularPrice,
 ItemCell.propTypes = {
     id: PropTypes.number.isRequired,
     imgSrcList: PropTypes.array.isRequired,
-    isPortrait: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
     finalPrice: PropTypes.number.isRequired,
     regularPrice: PropTypes.number.isRequired,

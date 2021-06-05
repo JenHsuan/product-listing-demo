@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import fullHeart from '../public/Heart_Filled.svg';
-import emptyHeart from '../public/Heart_Empty.svg';
+import fullHeart from '../public/icons/Heart_Filled.svg';
+import emptyHeart from '../public/icons/Heart_Empty.svg';
 
 import {
     ItemCellStyle,
@@ -10,7 +10,8 @@ import {
 const HeartButton = ({ onHeartClicked, isSelected }) => {
     return (
         <ItemCellStyle variant='heartContainer'>
-            <img src={isSelected ? fullHeart : emptyHeart} alt="no heart image" onClick={() => onHeartClicked()}/>
+            <img src={isSelected ? fullHeart : emptyHeart} alt="no heart image"
+                onClick={() => onHeartClicked()} />
         </ItemCellStyle>
     )
 }

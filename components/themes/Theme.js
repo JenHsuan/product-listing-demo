@@ -1,3 +1,12 @@
+import { keyframes } from 'styled-components'
+
+const breatheAnimation = keyframes`
+ 0% { height: 100px; width: 100px; }
+ 30% { height: 400px; width: 400px; opacity: 1 }
+ 40% { height: 405px; width: 405px; opacity: 0.3; }
+ 100% { height: 100px; width: 100px; opacity: 0.6; }
+`
+
 export default {
     itemCellContainer: {
         grid: {
@@ -10,7 +19,9 @@ export default {
     },
     itemCellPageContainer: {
         major: {
-            position: 'relative'
+            position: 'relative',
+            background: '#fff',
+            overflowX: 'hidden'
         }
     },
     wishListBtn: {
@@ -18,7 +29,12 @@ export default {
             margin: '50px 5px 10px 5px',
             '& button': {
                 width: '100%',
-                height: '50px'
+                height: '50px',
+                fontFamily: 'Open Sans',
+                fontSize: '18px',
+                fontWeight: 700,
+                color: '#6c6c6c',
+                cursor: 'pointer'
             }
         }
     },
@@ -66,7 +82,7 @@ export default {
             transform: 'translate(-50%, 0)',
             '& > .modal-title': {
                 fontSize: '18px',
-                margin: '0 40px',
+                margin: '0 50px',
                 fontFamily: 'Open Sans',
                 fontWeight: 700
             },
@@ -93,7 +109,7 @@ export default {
                     '> .close-btn': {
                         width: '10px',
                         height: '10px',
-                        margin: '15px 0 15px auto',
+                        margin: '15px',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -150,7 +166,8 @@ export default {
             height: '100vh',
             zIndex: '100',
             background: '#000',
-            opacity: 0.5
+            opacity: 0.5,
+            margin: 0
         }
     },
     itemCell: {
@@ -159,10 +176,13 @@ export default {
         },
         contentBody: {
             width: '300px',
-            height: '550px',
+            height: '520px',
             background: '#ffffff',
-            border: '1px solid gray',
-            borderRadius: '3px',
+            borderRaduis: '5px',
+            position: 'relative',
+            '&:hover': {
+                boxShadow: '2px black'
+            },
             '& .content-title': {
                 fontFamily: 'Open Sans',
                 fontSize: '20px',
@@ -200,6 +220,8 @@ export default {
             justifyContent: 'center',
             margin: '0',
             position: 'relative',
+            borderRadius: '5px',
+            border: '1px solid #6c6c6c',
             '&:hover .left-indicator': {
                 opacity: 0.7,
             },
@@ -209,35 +231,50 @@ export default {
             '& > img': {
                 height: '100%',
             },
+            '& > img:hover': {
+                '-ms-transform': 'scale(1.2)',
+                '-webkit-transform': 'scale(1.2)', /* Safari 3-8 */
+                transform: 'scale(1.2)',
+                transitionDuration: '0.5s',
+                background: 'rgb(247, 248, 255)'
+            },
             '& > .left-indicator': {
-                width: '15%',
-                height: '15%',
+                width: '10%',
+                height: '12%',
                 position: 'absolute',
                 top: '50%',
-                left: '-5%',
+                left: '0',
                 background: '#fff',
                 zIndex: '1000',
                 transform: 'translate(0, -50%)',
                 opacity: 0,
                 transition: '0.7s',
-                borderRadius: '3px',
+                border: '1px solid black',
+                borderRadius: '50%',
                 cursor: 'pointer',
-                margin: 0
+                margin: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             },
             '& > .right-indicator': {
-                width: '15%',
-                height: '15%',
+                width: '10%',
+                height: '12%',
                 position: 'absolute',
                 top: '50%',
-                left: '105%',
+                left: '100%',
                 background: '#fff',
                 zIndex: '1000',
                 transform: 'translate(-100%, -50%)',
                 opacity: 0,
                 transition: '0.7s',
-                borderRadius: '3px',
+                border: '1px solid black',
+                borderRadius: '50%',
                 cursor: 'pointer',
-                margin: 0
+                margin: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }
         },
         portraitImageContainer: {
@@ -248,6 +285,8 @@ export default {
             alignItems: 'center',
             margin: '0',
             position: 'relative',
+            borderRadius: '5px',
+            border: '1px solid #6c6c6c',
             '&:hover .left-indicator': {
                 opacity: 0.7,
             },
@@ -255,56 +294,88 @@ export default {
                 opacity: 0.7,
             },
             '& > img': {
-                height: '100%',
+                width: '100%',
+            },
+            '& > img:hover': {
+                '-ms-transform': 'scale(1.5)',
+                '-webkit-transform': 'scale(1.5)', /* Safari 3-8 */
+                transform: 'scale(1.5)',
+                transitionDuration: '0.5s',
+                background: 'rgb(247, 248, 255)'
             },
             '& > .left-indicator': {
-                width: '15%',
-                height: '15%',
+                width: '10%',
+                height: '12%',
                 position: 'absolute',
                 top: '50%',
-                left: '-5%',
+                left: '0%',
                 background: '#fff',
                 zIndex: '1000',
                 transform: 'translate(0, -50%)',
                 opacity: 0,
                 transition: '0.7s',
-                borderRadius: '3px',
+                border: '1px solid black',
+                borderRadius: '50%',
                 cursor: 'pointer',
-                margin: 0
+                margin: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             },
             '& > .right-indicator': {
-                width: '15%',
-                height: '15%',
+                width: '10%',
+                height: '12%',
                 position: 'absolute',
                 top: '50%',
-                left: '105%',
+                left: '100%',
                 background: '#fff',
                 zIndex: '1000',
                 transform: 'translate(-100%, -50%)',
                 opacity: 0,
                 transition: '0.7s',
-                borderRadius: '3px',
+                border: '1px solid black',
+                borderRadius: '50%',
                 cursor: 'pointer',
-                margin: 0
+                margin: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }
         },
-        starContainer: {
-            display: 'inline-block',
-            width: '30px',
-            margin: '10px 10px 0 0',
-            '& > img': {
-                width: '100%',
-            }
+        starsContainer: {
+            position: 'absolute',
+            left: '78%',
+            top: '100%',
+            transform: 'translate(-110%, -300%)',
+            width: '200px',
+           '& > .starContainer': {
+                display: 'inline-block',
+                width: '20px',
+                margin: '10px 10px 0 0',
+                '& > img': {
+                    width: '100%',
+                }
+            },
         },
         heartContainer: {
-            display: 'flex',
-            marginLeft: 'auto',
-            marginRight: '15px',
             width: '30px',
+            position: 'absolute',
+            zIndex: '100',
+            left: '100%',
+            top: '100%',
+            transform: 'translate(-110%, -300%)',
            '& > img': {
                width: '100%',
                cursor:'pointer'
             }
+        },
+        slideTip: {
+            position: 'relative',
+            background: 'blue',
+            display: 'block',
+            height: '30px',
+            left: '-200px',
+            width: '200px'
         }
     }
 };
