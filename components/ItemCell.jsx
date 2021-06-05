@@ -111,9 +111,9 @@ const ItemCell = ({ id, imgSrcList, title, finalPrice, regularPrice, fullStarNum
                 </ItemCellStyle>
             ) : (
                 <ItemCellStyle variant='landScapeImageContainer'>
-                    <div className='left-indicator' onClick={() => { changeImage(-1) }}>{ '<' }</div>
+                    <button className='left-indicator' onClick={() => { changeImage(-1) }}>{ '<' }</button>
                     <img src={imgSrcList[index]} alt="no image" onLoad={onImgLoad}/>
-                    <div className='right-indicator' onClick={() => {changeImage(1)}}>{ '>' }</div>
+                    <button className='right-indicator' onClick={() => {changeImage(1)}}>{ '>' }</button>
                 </ItemCellStyle>
             )}
 

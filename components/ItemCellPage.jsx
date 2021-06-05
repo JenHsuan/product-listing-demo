@@ -107,16 +107,16 @@ const ItemCellPage = () => {
         <ItemCellContainerStyle variant="grid">
             {itemCells.map(cell => {
                 return (
-                        <ItemCellStyle variant='demoContainer' key={`item-container-${cell.id}`}>
-                        <ItemCell id={cell.id}
-                            key={`item-${cell.id}`}
-                            imgSrcList={cell.imgSrcList}
-                            title={cell.title}
-                            finalPrice={cell.finalPrice}
-                            regularPrice={cell.regularPrice}
-                            fullStarNumber={cell.fullStarNumber}
-                            hasHalfStar={cell.hasHalfStar}/>
-                        </ItemCellStyle>
+                    <ItemCellStyle variant='demoContainer' key={`item-container-${cell.id}`}>
+                    <ItemCell id={cell.id}
+                        key={`item-${cell.id}`}
+                        imgSrcList={cell.imgSrcList}
+                        title={cell.title}
+                        finalPrice={cell.finalPrice}
+                        regularPrice={cell.regularPrice}
+                        fullStarNumber={cell.fullStarNumber}
+                        hasHalfStar={cell.hasHalfStar}/>
+                    </ItemCellStyle>
                 );
             })}
             </ItemCellContainerStyle>

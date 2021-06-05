@@ -62,7 +62,7 @@ const WishListModal = () => {
                             )
                         })}
                 </div>
-                <div className="total-price">Total price: ${wishList.reduce((acc, cur) => acc + cur.finalPrice, 0) }</div>
+                <div className="total-price">Total price: ${Math.round(wishList.reduce((acc, cur) => acc + cur.finalPrice, 0)* 100) / 100 }</div>
             </WishListModalStyle>)}
         <WishListModalStyle variant="backModal" onClick={closeModal}/>
         </>
