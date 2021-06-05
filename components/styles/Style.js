@@ -45,3 +45,12 @@ export const WishListModalStyle = styled('div')(
     }
   })
 );
+
+export const ScrollIndicatorStyle = styled('div')(
+  variant({
+    scale: 'scrollIndicator',
+    variants: {
+      major: {}
+    }
+  })
+);

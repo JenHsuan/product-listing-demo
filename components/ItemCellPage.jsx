@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ItemCell from './ItemCell';
 import WishListButton from './WishListButton';
 import WishListModal from './WishListModal';
+import ScrollButton from './ScrollButton';
+
 import {
     ItemCellStyle,
     ItemCellContainerStyle,
@@ -100,6 +102,7 @@ const ItemCellPage = () => {
 
     return (
         <ItemCellPageContainerStyle variant="major">
+            <ScrollButton></ScrollButton>
         {showWishListModal && <WishListModal/>}
         <ItemCellContainerStyle variant="grid">
             {itemCells.map(cell => {

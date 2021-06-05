@@ -21,7 +21,33 @@ export default {
         major: {
             position: 'relative',
             background: '#fff',
-            overflowX: 'hidden'
+            overflowX: 'hidden',
+            margin: '50px 0'
+        }
+    },
+    scrollIndicator: {
+        major: {
+            width: '60px',
+            height: '60px',
+            borderRadius: '50%',
+            position: 'fixed',
+            background: '#6c6c6c',
+            border: '1pz solid #fff',
+            zIndex: '100',
+            opacity: 0.5,
+            left: '100%',
+            top: '80%',
+            transform: 'translate(-110%, -400%)',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: '#fff',
+            fontSize: '14px',
+            fontWeight: 700,
+            '&:hover': {
+                opacity: 0.9
+            }
         }
     },
     wishListBtn: {
@@ -98,18 +124,18 @@ export default {
                 cursor: 'pointer'
             },
             '& > .wish-list-table': {
-                margin: '0 50px',
+                margin: '0 auto',
                 overflowY: 'scroll',
                 border: '1px solid black',
                 height: '300px',
+                width: '90%',
                 '& .content-field': {
                     display: 'flex',
                     alignItems: 'center',
                     margin: '10px 15px',
                     '> .close-btn': {
-                        width: '10px',
-                        height: '10px',
-                        margin: '15px',
+                        width: '10%',
+                        height: '10%',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
