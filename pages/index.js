@@ -4,7 +4,7 @@ import ItemCellPage from '../components/ItemCellPage';
 import dog1 from '../public/images/dog/dog1.jpg';
 
 export default function index() {
-  const title = "e-commerce Product Listing Demo Site";
+  const title = "E-Commerce Product Listing Demo Site";
   const description = "It's a demo website for the product listing which is made by Next.js, React, and Styled-Components";
   return (
     <>
