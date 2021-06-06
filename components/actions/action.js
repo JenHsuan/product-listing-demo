@@ -6,29 +6,17 @@ import {
 
 //Actions
 
-export const setWishList = (list) => dispatch => {
-    try {
-        dispatch({
-            type: SET_WISH_LIST,
-            payload: {
-                wishList: list
-            }
-        });
-    } catch (error) {
-        console.log(error);
-    }
-};
+export const setWishList = (list) => ({
+        type: SET_WISH_LIST,
+        payload: {
+            wishList: list
+        }
+    });
 
 
-export const setWishListModal = (show) => dispatch => {
-    try {
-        dispatch({
-            type: SET_WISH_LIST_MODAL,
-            payload: {
-                showWishListModal: show
-            }
-        });
-    } catch (error) {
-        console.log(error);
-    }
-};
+export const setWishListModal = (show) => ({
+        type: SET_WISH_LIST_MODAL,
+        payload: {
+            showWishListModal: show
+        }
+    });
