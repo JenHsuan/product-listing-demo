@@ -35,7 +35,9 @@ npm run build && npm run export
 ```
 
 ### Stacks
-* Next.js: The reason to use this frameworks is to achieve pre-rendering to optimize the performance. Also, I can add something in head to improve SEO like description, author, keywords, etc.
 * ReactJS
-* Redux (Redux-thunk)
-* Styled-components: The reason tio use this framework is that it can help me to avoid CSS polution. Also, it has ready done the CSS reset and it's convinient to use.
+* Redux (middleware: Redux-thunk)
+* Next.js
+The reason to use this framework is to achieve pre-rendering to optimize the performance. Also, I can add something in the head section to improve SEO like description, author, keywords, etc.
+* Styled-components
+The reason to use this framework is that it can help me to avoid CSS pollution. Also, it has already done the CSS reset and it's convenient to use.
